@@ -10,7 +10,7 @@ const Navbar = () => {
                     <img className="kang" src={process.env.PUBLIC_URL + "/kang-logo.gif"} alt="logo" />
                 </div>
                 <div className="brand nav-title">
-                    <p> ASTONISHED ORCA </p>
+                    <p> KEVIN KANG </p>
                 </div>
             </Link>
 

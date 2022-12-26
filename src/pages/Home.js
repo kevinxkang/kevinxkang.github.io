@@ -27,8 +27,9 @@ export default function Home() {
             </div>
             <div className="home-text-container">
                 <Fade bottom>
-                    <h2 className="home-h2-text"> Hey! I'm Astonished Orca 👋</h2>
-                    <p className="home-short-para"> I'm currently a Senior at Brown University studying Computer Science.
+                    <h2 className="home-h2-text"> Hey! I'm Kevin 👋</h2>
+                    <p className="home-short-para"> I'm currently a Senior at Brown University studying Computer Science, joining
+                        AWS as a Software Development Engineer!
                         I enjoy living on the edge, designing and building software that
                         makes a positive impact on the world.
                     </p>
@@ -37,7 +38,7 @@ export default function Home() {
                         a collection of my projects, experiments, and ramblings.
                     </p>
                     <p className="home-short-para">
-                        Enjoy your stay, but don't stay too long — I happen to be a busy Orca 🐳
+                        Enjoy your stay, but don't stay too long — I'll be wandering around!
                     </p>
                 </Fade>
             </div>
