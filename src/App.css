@@ -1,38 +1,473 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
+
+a, html, body {
+    color: #282c34;
+    font-family: "Raleway", sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    min-height: 100%;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    overflow: auto;
+    padding-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+/************** NAVBAR **************/
+.kang-container {
+    background: linear-gradient(to bottom, lightskyblue,powderblue,honeydew, honeydew, lightblue);
+    border-radius: 100px;
+    /*border: lightskyblue 0.1px solid;*/
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.kang {
+    width: 3.25rem;
+    /*margin-right: 10px;*/
+}
+
+.nav-container {
+    display: flex;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    align-items: stretch;
+    align-self: auto;
+    flex: 0 auto;
+    max-width: 1300px;
+    /*position: sticky;*/
+    /*top: 0;*/
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    text-decoration: none;
+    gap: 20px;
+}
+
+.nav-title {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+.nav-bar > a {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.nav-bar a:hover, .nav-title p:hover {
+    color: dodgerblue;
+    transition: all .275s ease-in-out 0s;
+}
+
+
+/************** HOME **************/
+
+.home-wrap {
+    max-width: 1300px;
+    margin: 0 auto;
+    margin-top: 6.5em;
+}
+
+.home-print-container {
+    margin-bottom: 3.5em;
+}
+
+.print-animation {
+    font-size: 75px;
+    font-weight: 300;
+}
+
+.home-text-container {
+    margin-left: 3em;
+}
+
+.home-h2-text {
+    font-size:35px;
+    margin-bottom: 1em;
+}
+
+.home-short-para {
+    font-size: 22.5px;
+    font-weight: 300;
+    max-width: 750px;
+    margin-bottom: 10px;
+    line-height: 1.75;
+}
+
+/************** ABOUT ME **************/
+
+.about-cols-container {
+    display: flex;
+    align-items: center;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3.5em;
+}
+
+.orca-about {
+    width: 85%;
+    border-radius: 80px;
+}
+
+.about-col-text > h1 {
+    font-size: 50px;
+    font-weight: 900;
+    margin-bottom: 1em;
+    -webkit-text-stroke: 1px #0d0d0d;
+    font-style: normal;
+}
+
+.about-para {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 25px auto;
+}
+
+/************** PORTFOLIO **************/
+
+.portfolio-grid-container {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    justify-content: space-evenly;
+    margin-top: 3.5em;
+    grid-gap: 3em;
+}
+
+.portfolio-item {
+    text-align: center;
+}
+
+.portfolio-container {
+    height: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.portfolio-img:hover {
+    /*enlarge slight;y*/
+    transform: scale(1.075);
+}
+
+.portfolio-img {
+    transition: all .75s ease;
+}
+
+.portfolio-hover h2 {
+    text-transform: uppercase;
+    color: #282c34;
+}
+
+/************** FOOTER **************/
+
+footer {
+    margin-top: 15vh;
+    padding-bottom: 2vh;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.social-media-icons {
+    display: flex;
+    align-items: center;
+    gap: 2.5px;
+    font-size: 20px;
+}
+
+.social-media-icons a {
+    color: #0d0d0d;
+    text-decoration: none;
+    margin-right: 10px;
+
+}
+
+.social-media-icons a:hover {
+    color: white;
+    transition: all .5s ease;
+}
+
+.kd {
+    font-style: italic;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+/************** CHENGDU TASTE **************/
+
+.portfolio-page {
+    background: aliceblue;
+    font-family: "Raleway", sans-serif;
+}
+.header-img {
+    margin-bottom: 6vh;
+}
+
+.section-header {
+    font-weight: 900;
+    font-size: 60px;
+    line-height: 1.4em;
+    margin-bottom:-1.3em;
+    color: #2b96cd;
+    text-transform: lowercase;
+    text-shadow: 3px 3px 0 #29fef0;
+    transform: translateY(-85px);
+    background-color: aliceblue;
+    /*text-shadow: 3px 3px 0 palegoldenrod;*/
+}
+
+.info-wrapper > p {
+    font-weight: 500;
+    /*color: #525252;*/
+    font-size: 1.4em;
+    line-height: 1.5em;
+    /*margin-bottom: 1.5em;*/
+    /*make font-family degular*/
+    font-family: "Raleway", sans-serif;
+}
+
+#chengdu-access{
+    margin-bottom: 1.5em;
+}
+
+#attention-hook {
+    font-weight: 900;
+    /*make 3d effect text*/
+    text-shadow: 3px 2px 0 yellow;
+/*highlight text*/
+    text-decoration: underline;
+    text-decoration-color: #282c34;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 3px;
+    margin-bottom: 1em;
+}
+
+#chengdu-hook-p > a{
+    text-decoration: underline;
+}
+
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5em 4em;
+    margin: 4vw 15vw 9vh;
+    /*border: 3px solid lightskyblue;*/
+    /*border-top: 3px solid lightskyblue;*/
+    /*border-bottom: 3px solid lightskyblue;*/
+
+
+    border-radius: 15px;
+    align-items: flex-start;
+}
+
+#challenge-p {
+    /*italic*/
+    font-style: italic;
+}
+
+h3 {
+    font-weight: 900;
+    font-size: 2em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    text-shadow: 2px 2px 0 #FFB357;
+    text-transform: lowercase;
+}
+
+#chengdu-website {
+    margin:auto;
+    height: 60%;
+    width: 50%;
+    padding-bottom: 5vh;
+}
+
+li {
+    text-align: left;
+    padding-bottom: 15px;
+    font-weight: 500;
+    font-size: 19px;
+}
+
+ul, ol {
+    padding-top: 25px;
+}
+
+.multidiv-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+
+h4 {
+    padding-top:1em;
+    color: #282c34;
+    text-transform: uppercase;
+}
+
+.col {
+    width: 50%;
+}
+
+.lofi-grid {
+    display: grid;
+    flex-flow: row wrap;
+}
+
+.lofi-grid > img, #visual-guide{
+    width: 100%;
+    margin: auto;
+    /*display: grid;*/
+    /*grid-template: repeat(2, 1fr) / repeat(2, 1fr);*/
+}
+
+.grid {
+    padding-top: 35px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1em;
+    width: 70%;
+    margin: auto;
+}
+
+#redesign-mobile {
+    width: 25%;
+}
+
+#redesign {
+    height: fit-content;
+
+}
+
+#visual-p > a {
+    text-decoration: underline;
+}
+
+/************** CEREMONY **************/
+
+.personas-grid {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    gap: 15px;
+}
+
+.persona3-img {
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+}
+
+#p-grid {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    /*margin: auto;*/
+    text-align: center;
+    gap: 25px;
+}
+#p-grid > img {
+    width: 100%;
+    /*height: 10%;*/
+    margin: auto;
+}
+
+#p-grid > p {
+    font-weight: 500;
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin: auto;
+}
+
+/************** ITERATIVE **************/
+
+.sketch-img {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+iframe {
+    margin-top:1em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin-bottom: 1em;
+
+    width: 100%;
+    height: 70vh;
+}
+
+#email-img {
+    margin-top: 20px;
+    border-radius: 20px;
+    /*margin-bottom: 20px;*/
+}
+
+/************** CROSSWORD **************/
+
+#cw-wrap{
+    margin-top: 3.5em;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    gap: 15px;
+    justify-content: center;
+}
+
+#cw-wrap > p {
+    margin: auto;
+    text-align: center;
+    line-height: 1.3em;
+    font-weight: 500;
+}
+
+#cw-wrap > img, #cw-item > img {
+    border-radius: 20px;
+}
+
+#cw-item {
+    display: flex;
+    gap: 20px;
+    margin: 0 -10em;
+}
+
+#cw-item > p {
+    margin: auto;
+    text-align: center;
+    line-height: 1.3em;
+    font-weight: 500;
+    font-size: 1.5em;
+}
+#cw-item > img {
+    width: 45%;
+    height: 100%;
+    margin: auto;
+}
+
+#x {
+    text-decoration: underline;
 }

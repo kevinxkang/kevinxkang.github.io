@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  height: 100%;
+}
+
+
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(to bottom, white, ghostwhite, ghostwhite, aliceblue, aliceblue, aliceblue, lightskyblue);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* jeff's css reset from lecture */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  /*color: inherit;*/
+  font-family: 'Raleway', sans-serif;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+}
+
+/* ----------------------------- */
+
+
