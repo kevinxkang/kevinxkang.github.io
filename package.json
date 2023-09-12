@@ -1,7 +1,7 @@
 {
   "name": "kevinxkang.github.io",
   "version": "0.1.0",
-  "homepage": "kevinxkang.github.io",
+  "homepage": "https://kevinxkang.github.io/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",
