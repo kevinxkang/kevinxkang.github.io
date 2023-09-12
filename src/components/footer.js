@@ -6,6 +6,7 @@ const Footer = () => {
         <footer>
             <div className="footer-container">
                 <div className="social-media-icons">
+
                     {/*<a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">*/}
                     {/*    <FaFacebook />*/}
                     {/*</a>*/}

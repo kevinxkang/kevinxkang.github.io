@@ -5,9 +5,9 @@ import resume from "../assets/coming-soon.pdf";
 const Navbar = () => {
     return (
         <div className="nav-container">
-            <Link to="/portfolio" className="brand nav-logo">
+            <Link to="/home" className="brand nav-logo">
                 <div className="kang-container">
-                    <img className="kang" src={process.env.PUBLIC_URL + "/kang-logo.gif"} alt="logo" />
+                    <img className="kang" src={process.env.PUBLIC_URL + "/home/kang-logo.gif"} alt="logo" />
                 </div>
                 <div className="brand nav-title">
                     <p> KEVIN KANG </p>
@@ -15,8 +15,9 @@ const Navbar = () => {
             </Link>
 
             <nav className="nav-bar">
-                <NavLink to="/work">Portfolio</NavLink>
-                <NavLink to="/about">About Me</NavLink>
+                <NavLink to="/home"> Home </NavLink>
+                <NavLink to="/work"> Portfolio</NavLink>
+                {/*<NavLink to="/about">About Me</NavLink>*/}
                 <a href={resume} target="_blank" rel="noopener noreferrer">Resume</a>
             </nav>
         </div>

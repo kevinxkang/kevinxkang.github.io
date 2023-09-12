@@ -26,21 +26,28 @@ export default function Home() {
                 />
             </div>
             <div className="home-text-container">
-                <Fade bottom>
-                    <h2 className="home-h2-text"> Hey! I'm Kevin 👋</h2>
-                    <p className="home-short-para"> I'm currently a Senior at Brown University studying Computer Science, joining
-                        AWS as a Software Development Engineer!
-                        I enjoy living on the edge, designing and building software that
-                        makes a positive impact on the world.
-                    </p>
-                    <p className="home-short-para">
-                        I love to learn, love to think, and love to teach. Here you'll find
-                        a collection of my projects, experiments, and ramblings.
-                    </p>
-                    <p className="home-short-para">
-                        Enjoy your stay, but don't stay too long — I'll be wandering around!
-                    </p>
-                </Fade>
+                <div className="home-text-wrap">
+                    <Fade bottom>
+                        <h2 className="home-h2-text"> Hey! It's Kevin 👋 </h2>
+                        <p className="home-short-para"> I'm currently a Senior at Brown University studying Computer Science, joining
+                            AWS as a Software Development Engineer!
+                            {/*I enjoy living on the edge, designing and building software that*/}
+                            {/*makes a positive impact on the world.*/}
+                        </p>
+                        <p className="home-short-para">
+                            I love to learn, think, and teach. Here you'll find
+                            a collection of my projects, experiments, and ramblings.
+                        </p>
+                        <p className="home-short-para">
+                            Enjoy your stay, but don't stay too long — I'll be wandering around!
+                        </p>
+                    </Fade>
+                </div>
+                <div className="home-text-pfp-wrap">
+                    <Fade>
+                        <img className ="home-text-pfp" src={process.env.PUBLIC_URL + "/home/profile-picture.jpg"} alt="Profile"/>
+                    </Fade>
+                </div>
             </div>
         </div>
     );

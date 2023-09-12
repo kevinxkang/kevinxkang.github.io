@@ -6,12 +6,15 @@ a, html, body {
 }
 
 .App {
-    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .App-header {
     overflow: auto;
     padding-bottom: 10px;
+    flex: 1 0 auto;
 }
 
 
@@ -82,11 +85,11 @@ a, html, body {
 .home-wrap {
     max-width: 1300px;
     margin: 0 auto;
-    margin-top: 6.5em;
+    margin-top: 2.5em;
 }
 
 .home-print-container {
-    margin-bottom: 3.5em;
+    margin-bottom: 2.5em;
 }
 
 .print-animation {
@@ -96,6 +99,7 @@ a, html, body {
 
 .home-text-container {
     margin-left: 3em;
+    display: flex;
 }
 
 .home-h2-text {
@@ -109,6 +113,40 @@ a, html, body {
     max-width: 750px;
     margin-bottom: 10px;
     line-height: 1.75;
+}
+
+/*.home-text-pfp-wrap {*/
+/*    display: flex;*/
+/*    justify-content: center; !* if you want to center the image horizontally *!*/
+/*    align-items: center;     !* if you want to center the image vertically *!*/
+/*}*/
+
+/*.home-text-pfp {*/
+/*    !*#TODO*!*/
+/*    !*border-radius: 1000px;*!*/
+/*    max-width: 12.5em;*/
+/*    margin-left: 6.5em;*/
+/*    width: 40rem;*/
+/*    height: 4rem;*/
+/*    border-radius: 50%;*/
+/*    object-fit: cover;*/
+/*    object-position: center;  !* This centers the image inside the div *!*/
+/*}*/
+
+.home-text-pfp-wrap {
+    width: 19em;   /* This ensures the wrapper is square */
+    height: 19em;  /* Same value as width */
+    margin-left: 3.5em;
+    overflow: hidden;  /* This clips the image */
+    border-radius: 100%; /* Optional: this will make the view circular */
+    /*position: relative;  !* Needed to position child elements *!*/
+}
+
+.home-text-pfp {
+    width: 100%;  /* Take the full width of the wrapper */
+    height: 100%; /* Take the full height of the wrapper */
+    object-fit: cover;  /* This scales the image to cover the div */
+    object-position: center;  /* This centers the image inside the div */
 }
 
 /************** ABOUT ME **************/
@@ -159,8 +197,9 @@ a, html, body {
 
 .portfolio-container {
     height: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
+    /*max-width: 950px;*/
+    max-width: 70vw;
+    margin: 0 auto 5em;
 }
 
 .portfolio-img:hover {
@@ -180,8 +219,9 @@ a, html, body {
 /************** FOOTER **************/
 
 footer {
-    margin-top: 15vh;
+    /*margin-top: 15vh;*/
     padding-bottom: 2vh;
+    flex-shrink: 0;
 }
 
 .footer-container {
@@ -205,7 +245,7 @@ footer {
 }
 
 .social-media-icons a:hover {
-    color: white;
+    color: dodgerblue;
     transition: all .5s ease;
 }
 

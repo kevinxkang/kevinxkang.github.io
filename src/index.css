@@ -20,7 +20,7 @@ html {
 body {
   height: 100%;
   margin: 0;
-  background: linear-gradient(to bottom, white, ghostwhite, ghostwhite, aliceblue, aliceblue, aliceblue, lightskyblue);
+  background: linear-gradient(to bottom, white, ghostwhite, ghostwhite, aliceblue, aliceblue,aliceblue, aliceblue, lightskyblue);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
