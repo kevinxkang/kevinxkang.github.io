@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/kevinxkang.github.io/static/css/main.92b2cfc6.css",
+    "main.js": "/kevinxkang.github.io/static/js/main.e0d3a1a4.js",
+    "static/media/coming-soon.pdf": "/kevinxkang.github.io/static/media/coming-soon.52e8a3194c85cafcf23c.pdf",
+    "index.html": "/kevinxkang.github.io/index.html",
+    "main.92b2cfc6.css.map": "/kevinxkang.github.io/static/css/main.92b2cfc6.css.map",
+    "main.e0d3a1a4.js.map": "/kevinxkang.github.io/static/js/main.e0d3a1a4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.92b2cfc6.css",
+    "static/js/main.e0d3a1a4.js"
+  ]
+}
