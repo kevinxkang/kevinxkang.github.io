@@ -1,4 +1,9 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
 name: Node.js CI
+env:
+  CI: ""
 
 on:
   push:
@@ -8,10 +13,13 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
       - uses: actions/checkout@v3
@@ -20,11 +28,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-
-      # Setting the homepage directly in package.json
+      # change "homepage" in package.json with current repository name
+      - run: touch repository.txt
+      - run: echo ${{ github.repository }} >> repository.txt
+      - run: sed -i 's/.*\///' repository.txt
       - run: |
-          sed -i 's@\"homepage\": \".*\"@\"homepage\": \"https://kevinxkang.github.io/\"@g' package.json
-
+          sed -i "s/homepage.*/homepage\": \"$(sed 's@[/\&]@\\&@g;$!s/$/\\/' repository.txt)\",/g" package.json
+      - run: rm repository.txt
       - run: npm install
       - run: npm run build
       - name: Deploy
