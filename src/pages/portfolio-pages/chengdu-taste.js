@@ -144,19 +144,19 @@ export default function ChengduTaste() {
                     <h3> Low-fidelity wireframes </h3>
 
                     <div className="lofi-grid">
-                        <img id ="lofi-1" src ={process.env.PUBLIC_URL +"/lofi-1.png"}/>
-                        <img id ="lofi-2" src ={process.env.PUBLIC_URL +"/lofi-2.png"}/>
-                        <img id ="lofi-3" src ={process.env.PUBLIC_URL +"/lofi-3.png"}/>
+                        <img id ="lofi-1" src ={process.env.PUBLIC_URL +"/lofi-1.png"} alt={"lofi picture"}/>
+                        <img id ="lofi-2" src ={process.env.PUBLIC_URL +"/lofi-2.png"} alt={"lofi picture"}/>
+                        <img id ="lofi-3" src ={process.env.PUBLIC_URL +"/lofi-3.png"} alt={"lofi picture"}/>
                     </div>
 
                     <h3> Visual Design Style Guide  </h3>
-                    <img id ="visual-guide" src ={process.env.PUBLIC_URL +"/chengdu-vdg.png"}/>
+                    <img id ="visual-guide" src ={process.env.PUBLIC_URL +"/chengdu-vdg.png"} alt={"lofi picture"}/>
 
                     <h3> High-Fidelity Prototyping   </h3>
                     <div className="hifi-grid">
-                        <img id ="lofi-1" src ={process.env.PUBLIC_URL +"/hifi-1.png"}/>
-                        <img id ="lofi-2" src ={process.env.PUBLIC_URL +"/hifi-2.png"}/>
-                        <img id ="lofi-3" src ={process.env.PUBLIC_URL +"/hifi-3.png"}/>
+                        <img id ="lofi-1" src ={process.env.PUBLIC_URL +"/hifi-1.png"} alt={"lofi picture"}/>
+                        <img id ="lofi-2" src ={process.env.PUBLIC_URL +"/hifi-2.png"} alt={"lofi picture"}/>
+                        <img id ="lofi-3" src ={process.env.PUBLIC_URL +"/hifi-3.png"} alt={"lofi picture"}/>
                     </div>
                 </section>
 
