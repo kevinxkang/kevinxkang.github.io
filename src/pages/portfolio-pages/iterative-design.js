@@ -68,7 +68,7 @@ export default function IterativeDesign() {
                     Here's our interactive high-fidelity mockup of our interface before we received feedback:
                 </p>
 
-                <iframe
+                <iframe title={"figma_embedding"}
                 src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fo9FpXODdTeUAu36U84OEjR%2Fcs1300-iterative-design-before-feedback%3Fnode-id%3D14%253A2100%26scaling%3Dscale-down%26page-id%3D0%253A1%26starting-point-node-id%3D14%253A2100"
                 allowFullScreen
                 />
@@ -107,7 +107,7 @@ export default function IterativeDesign() {
                     Here's our interactive high-fidelity mockup of our interface with updates from the we received feedback:
                 </p>
 
-                <iframe
+                <iframe title={"figma_embedding"}
                 src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FaqBnvhI1q1a3EDv55sor1d%2Fcs1300-iterative-design-Final%3Fnode-id%3D14%253A2100%26scaling%3Dscale-down%26page-id%3D0%253A1%26starting-point-node-id%3D14%253A2100"
                 allowFullScreen
                 />
