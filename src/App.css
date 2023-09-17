@@ -37,12 +37,9 @@ a, html, body {
     margin-left: auto;
     margin-right: auto;
     justify-content: space-between;
-    align-items: stretch;
-    align-self: auto;
+    margin: 0 2em 0 2em;
     flex: 0 auto;
     max-width: 1300px;
-    /*position: sticky;*/
-    /*top: 0;*/
 }
 
 .brand {
@@ -90,6 +87,7 @@ a, html, body {
 
 .home-print-container {
     margin-bottom: 2.5em;
+    margin-left: 2em;
 }
 
 .print-animation {
