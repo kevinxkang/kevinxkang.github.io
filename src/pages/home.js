@@ -29,8 +29,8 @@ export default function Home() {
                 <div className="home-text-wrap">
                     <Fade bottom>
                         <h2 className="home-h2-text"> Hey! It's Kevin 👋 </h2>
-                        <p className="home-short-para"> I'm currently a Senior at Brown University studying Computer Science, joining
-                            AWS as a Software Development Engineer!
+                        <p className="home-short-para"> I'm a new grad from Brown University studying Computer Science, joining AWS
+                            as a Software Development Engineer!
                             {/*I enjoy living on the edge, designing and building software that*/}
                             {/*makes a positive impact on the world.*/}
                         </p>
@@ -43,11 +43,11 @@ export default function Home() {
                         </p>
                     </Fade>
                 </div>
-                <div className="home-text-pfp-wrap">
-                    <Fade>
-                        <img className ="home-text-pfp" src={process.env.PUBLIC_URL + "/home/profile-picture.jpg"} alt="Profile"/>
-                    </Fade>
-                </div>
+                {/*<div className="home-text-pfp-wrap">*/}
+                {/*    <Fade>*/}
+                {/*        <img className ="home-text-pfp" src={process.env.PUBLIC_URL + "/home/profile-picture.jpg"} alt="Profile"/>*/}
+                {/*    </Fade>*/}
+                {/*</div>*/}
             </div>
         </div>
     );

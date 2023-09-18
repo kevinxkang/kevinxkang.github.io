@@ -13,7 +13,7 @@ a, html, body {
 
 .App-header {
     overflow: auto;
-    padding-bottom: 10px;
+    padding-bottom: 4em;
     flex: 1 0 auto;
 }
 
