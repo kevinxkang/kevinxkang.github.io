@@ -34,12 +34,10 @@ a, html, body {
 .nav-container {
     display: flex;
     height: 75px;
-    margin-left: auto;
-    margin-right: auto;
     justify-content: space-between;
-    margin: 0 2em 0 2em;
-    flex: 0 auto;
+    margin: auto;
     max-width: 1300px;
+    padding: 0 1em 0 1em;
 }
 
 .brand {
