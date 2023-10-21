@@ -226,6 +226,7 @@ footer {
     justify-content: space-between;
     max-width: 1300px;
     margin: auto;
+    padding: 0 1em;
 }
 
 .social-media-icons {
