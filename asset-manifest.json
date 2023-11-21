@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.14b147e3.css",
-    "main.js": "/static/js/main.8aa99c9a.js",
+    "main.css": "/static/css/main.e84dbd9c.css",
+    "main.js": "/static/js/main.daff20de.js",
     "static/media/KevinKang_NewGrad_2023.pdf": "/static/media/KevinKang_NewGrad_2023.a19ec6225da262212779.pdf",
     "index.html": "/index.html",
-    "main.14b147e3.css.map": "/static/css/main.14b147e3.css.map",
-    "main.8aa99c9a.js.map": "/static/js/main.8aa99c9a.js.map"
+    "main.e84dbd9c.css.map": "/static/css/main.e84dbd9c.css.map",
+    "main.daff20de.js.map": "/static/js/main.daff20de.js.map"
   },
   "entrypoints": [
-    "static/css/main.14b147e3.css",
-    "static/js/main.8aa99c9a.js"
+    "static/css/main.e84dbd9c.css",
+    "static/js/main.daff20de.js"
   ]
 }
