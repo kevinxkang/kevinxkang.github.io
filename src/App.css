@@ -510,3 +510,12 @@ iframe {
 #x {
     text-decoration: underline;
 }
+
+/************** MUSINGS **************/
+
+.musings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* This makes the container take the full viewport height */
+}

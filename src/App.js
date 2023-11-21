@@ -5,6 +5,7 @@ import Footer from "./components/footer";
 import resume from "./assets/KevinKang_NewGrad_2023.pdf";
 import Home from "./pages/home";
 import Portfolio from "./pages/portfolio";
+import Musings from "./pages/musings";
 import ChengduTaste from "./pages/portfolio-pages/chengdu-taste";
 import Crossword from "./pages/portfolio-pages/crossword";
 import Personas from "./pages/portfolio-pages/ceremony";
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/home" element={<Home />}/>
                 {/*<Route path="/about" element={<About />} />*/}
                 <Route path="/work" element={<Portfolio />} />
+                <Route path="/musings" element={<Musings />} />
                 <Route path="/resume" a={resume}/>
 
                 {/*work routes*/}
