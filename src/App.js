@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from "./components/navbar";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
-import resume from "./assets/KevinKang_NewGrad_2023.pdf";
+import resume from "./assets/Kevin_Kang_Resume_Q32025.pdf";
 import Home from "./pages/home";
 import Portfolio from "./pages/portfolio";
 import Musings from "./pages/musings";
