@@ -33,11 +33,13 @@ a, html, body {
 
 .nav-container {
     display: flex;
-    height: 75px;
+    align-items: center;
     justify-content: space-between;
     margin: auto;
     max-width: 1300px;
-    padding: 0 1em 0 1em;
+    padding: var(--space-2) var(--gutter);
+    gap: var(--space-3);
+    flex-wrap: wrap;
 }
 
 .brand {
@@ -47,7 +49,7 @@ a, html, body {
 
 .nav-logo {
     text-decoration: none;
-    gap: 20px;
+    gap: var(--space-2);
 }
 
 .nav-title {
@@ -59,7 +61,8 @@ a, html, body {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 30px;
+    gap: var(--space-3);
+    flex-wrap: wrap;
 }
 
 .nav-bar > a {
@@ -79,13 +82,12 @@ a, html, body {
 
 .home-wrap {
     max-width: 1300px;
-    margin: 0 auto;
-    margin-top: 2.5em;
+    margin: var(--section-top) auto 0;
+    padding-inline: var(--gutter);
 }
 
 .home-print-container {
-    margin-bottom: 2.5em;
-    margin-left: 2em;
+    margin-bottom: var(--space-4);
 }
 
 .print-animation {
@@ -94,20 +96,21 @@ a, html, body {
 }
 
 .home-text-container {
-    margin-left: 3em;
     display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
 }
 
 .home-h2-text {
     font-size:35px;
-    margin-bottom: 1em;
+    margin-bottom: var(--space-3);
 }
 
 .home-short-para {
     font-size: 22.5px;
     font-weight: 300;
     max-width: 750px;
-    margin-bottom: 10px;
+    margin-bottom: var(--space-2);
     line-height: 1.75;
 }
 
@@ -132,7 +135,7 @@ a, html, body {
 .home-text-pfp-wrap {
     width: 19em;   /* This ensures the wrapper is square */
     height: 19em;  /* Same value as width */
-    margin-left: 3.5em;
+    margin-left: var(--space-4);
     overflow: hidden;  /* This clips the image */
     border-radius: 100%; /* Optional: this will make the view circular */
     /*position: relative;  !* Needed to position child elements *!*/
@@ -216,7 +219,8 @@ a, html, body {
 
 footer {
     /*margin-top: 15vh;*/
-    padding-bottom: 2vh;
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
     flex-shrink: 0;
 }
 
@@ -226,21 +230,22 @@ footer {
     justify-content: space-between;
     max-width: 1300px;
     margin: auto;
-    padding: 0 1em;
+    padding: 0 var(--gutter);
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .social-media-icons {
     display: flex;
     align-items: center;
-    gap: 2.5px;
+    gap: var(--space-1);
     font-size: 20px;
 }
 
 .social-media-icons a {
     color: #0d0d0d;
     text-decoration: none;
-    margin-right: 10px;
-
 }
 
 .social-media-icons a:hover {
@@ -518,4 +523,48 @@ iframe {
     justify-content: center;
     align-items: center;
     height: 70vh; /* This makes the container take the full viewport height */
+}
+
+@media (max-width: 900px) {
+    .nav-container {
+        padding-block: var(--space-2);
+    }
+
+    .nav-bar {
+        gap: var(--space-2);
+    }
+
+    .home-text-container {
+        gap: var(--space-3);
+    }
+
+    .footer-container {
+        gap: var(--space-2);
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-bar {
+        width: 100%;
+        justify-content: flex-start;
+        gap: var(--space-2);
+    }
+
+    .home-text-container {
+        flex-direction: column;
+    }
+
+    .home-print-container {
+        margin-bottom: var(--space-3);
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

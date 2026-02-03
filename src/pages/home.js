@@ -12,7 +12,8 @@ export default function Home() {
                         "print('Hello World!')",
                         3500,
                         "print('",
-                        400,
+
+                    400,
                         "print('Welcpme to m",
                         200,
                         "print('Welc",
@@ -29,7 +30,7 @@ export default function Home() {
                 <div className="home-text-wrap">
                     <Fade bottom>
                         <h2 className="home-h2-text"> Hey! I'm Kevin 👋 </h2>
-                        <p className="home-short-para"> I'm currently a Software Engineer at Amazon AGI building Nova and shaping the future of human-computer interaction
+                        <p className="home-short-para"> I'm currently a Software Engineer at Amazon AGI building ml infra (compute, storage, and governance) for Nova models
                             {/*I enjoy living on the edge, designing and building software that*/}
                             {/*makes a positive impact on the world.*/}
                         </p>

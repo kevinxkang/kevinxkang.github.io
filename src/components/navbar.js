@@ -1,6 +1,6 @@
 import React from "react";
 import {Link, NavLink} from "react-router-dom";
-import resume from "../assets/Kevin_Kang_Resume_Q32025.pdf";
+import resume from "../assets/KXKCV2026.pdf";
 
 const Navbar = () => {
     return (

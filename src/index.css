@@ -16,6 +16,19 @@ html {
   height: 100%;
 }
 
+:root {
+  --space-0: 0;
+  --space-1: clamp(0.5rem, 0.45rem + 0.2vw, 0.65rem);
+  --space-2: clamp(0.8rem, 0.7rem + 0.3vw, 1rem);
+  --space-3: clamp(1.3rem, 1.1rem + 0.5vw, 1.6rem);
+  --space-4: clamp(2.1rem, 1.7rem + 0.8vw, 2.6rem);
+  --space-5: clamp(3.4rem, 2.6rem + 1.2vw, 4.2rem);
+  --space-6: clamp(5.5rem, 4rem + 2vw, 6.8rem);
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --section-top: var(--space-5);
+  --section-bottom: var(--space-5);
+}
+
 
 body {
   height: 100%;
@@ -58,5 +71,4 @@ table {
 }
 
 /* ----------------------------- */
-
 
