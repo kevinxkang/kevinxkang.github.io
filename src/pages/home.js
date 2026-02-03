@@ -9,16 +9,16 @@ export default function Home() {
                 <TypeAnimation
                     sequence={
                     [   2500,
-                        "print('Hello World!')",
+                        "print('hello world!')",
                         3500,
                         "print('",
 
                     400,
-                        "print('Welcpme to m",
+                        "print('welcpme to m",
                         200,
-                        "print('Welc",
+                        "print('welc",
                         300,
-                        "print('Welcome to my website!')",
+                        "print('welcome to my website!')",
                     ]}
                      cursor={true}
                      className="print-animation"
@@ -29,17 +29,16 @@ export default function Home() {
             <div className="home-text-container">
                 <div className="home-text-wrap">
                     <Fade bottom>
-                        <h2 className="home-h2-text"> Hey! I'm Kevin 👋 </h2>
-                        <p className="home-short-para"> I'm currently a Software Engineer at Amazon AGI building ml infra (compute, storage, and governance) for Nova models
+                        <h2 className="home-h2-text"> hey! i'm kevin 👋 </h2>
+                        <p className="home-short-para"> currently a swe at amazon agi building ml infra for nova models
                             {/*I enjoy living on the edge, designing and building software that*/}
                             {/*makes a positive impact on the world.*/}
                         </p>
                         <p className="home-short-para">
-                            I love to learn, think, and teach. Here you'll find
-                            a collection of my projects, experiments, and ramblings.
+                           here you'll find a collection of my projects, experiments, and ramblings.
                         </p>
                         <p className="home-short-para">
-                            Enjoy your stay!
+                            enjoy!
                         </p>
                     </Fade>
                 </div>

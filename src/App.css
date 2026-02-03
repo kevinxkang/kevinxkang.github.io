@@ -31,6 +31,19 @@ a, html, body {
     /*margin-right: 10px;*/
 }
 
+.kang-container:hover .kang {
+    animation: kang-shake 0.45s ease-in-out;
+}
+
+@keyframes kang-shake {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(-6deg); }
+    40% { transform: rotate(6deg); }
+    60% { transform: rotate(-4deg); }
+    80% { transform: rotate(4deg); }
+    100% { transform: rotate(0deg); }
+}
+
 .nav-container {
     display: flex;
     align-items: center;
