@@ -1,15 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.42cad238.css",
-    "main.js": "/static/js/main.c668575b.js",
-    "static/media/Kevin_Kang_Resume_Q32025.pdf": "/static/media/Kevin_Kang_Resume_Q32025.4746fabf6e169194beae.pdf",
+    "main.css": "/static/css/main.296bc79e.css",
+    "main.js": "/static/js/main.ba374de6.js",
     "static/media/KXKCV2026.pdf": "/static/media/KXKCV2026.2c84d2a4084d98af4b07.pdf",
     "index.html": "/index.html",
-    "main.42cad238.css.map": "/static/css/main.42cad238.css.map",
-    "main.c668575b.js.map": "/static/js/main.c668575b.js.map"
+    "main.296bc79e.css.map": "/static/css/main.296bc79e.css.map",
+    "main.ba374de6.js.map": "/static/js/main.ba374de6.js.map"
   },
   "entrypoints": [
-    "static/css/main.42cad238.css",
-    "static/js/main.c668575b.js"
+    "static/css/main.296bc79e.css",
+    "static/js/main.ba374de6.js"
   ]
 }
