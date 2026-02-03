@@ -2,7 +2,7 @@ import './App.css';
 import Navbar from "./components/navbar";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer";
-import resume from "./assets/Kevin_Kang_Resume_Q32025.pdf";
+import resume from "./assets/KXKCV2026.pdf";
 import Home from "./pages/home";
 import Portfolio from "./pages/portfolio";
 import Musings from "./pages/musings";
@@ -14,30 +14,37 @@ import IterativeDesign from "./pages/portfolio-pages/iterative-design";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <HashRouter>
-            <Navbar />
-            <Routes>
-                {/*default route*/}
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />}/>
-                {/*<Route path="/about" element={<About />} />*/}
-                <Route path="/work" element={<Portfolio />} />
-                <Route path="/musings" element={<Musings />} />
-                <Route path="/resume" a={resume}/>
+    <>
+      <div className="aurora" aria-hidden="true">
+        <span className="aurora__layer aurora__layer--one" />
+        <span className="aurora__layer aurora__layer--two" />
+        <span className="aurora__layer aurora__layer--three" />
+      </div>
+      <div className="App">
+        <header className="App-header">
+          <HashRouter>
+              <Navbar />
+              <Routes>
+                  {/*default route*/}
+                  <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />}/>
+                  {/*<Route path="/about" element={<About />} />*/}
+                  <Route path="/work" element={<Portfolio />} />
+                  <Route path="/musings" element={<Musings />} />
+                  <Route path="/resume" a={resume}/>
 
-                {/*work routes*/}
-                <Route path="/work/chengdu-taste" element={<ChengduTaste />} />
-                <Route path="/work/crossword" element={<Crossword />} />
-                <Route path="/work/personas" element={<Personas />} />
-                <Route path="/work/iterative-design" element={<IterativeDesign />} />
+                  {/*work routes*/}
+                  <Route path="/work/chengdu-taste" element={<ChengduTaste />} />
+                  <Route path="/work/crossword" element={<Crossword />} />
+                  <Route path="/work/personas" element={<Personas />} />
+                  <Route path="/work/iterative-design" element={<IterativeDesign />} />
 
-            </Routes>
-        </HashRouter>
-      </header>
-        <Footer/>
-    </div>
+              </Routes>
+          </HashRouter>
+        </header>
+          <Footer/>
+      </div>
+    </>
   );
 }
 
