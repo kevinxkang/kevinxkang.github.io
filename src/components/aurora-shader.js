@@ -68,9 +68,9 @@ export const SKY = `
 // wind and swell: long gentle undulations, like lines of wind over open water
 vec2 wind(vec2 p, float t) {
     float a = 0.12
-            + 0.28 * sin(p.x * 2.0 + p.y * 1.5 - t * 0.28)
-            + 0.16 * sin(p.x * 4.3 - p.y * 0.8 + t * 0.18 + 1.3)
-            + (noise(p * 1.4 + vec2(t * 0.07, 0.0)) - 0.5) * 0.5;
+            + 0.28 * sin(p.x * 2.0 + p.y * 1.5 - t * 0.2)
+            + 0.16 * sin(p.x * 4.3 - p.y * 0.8 + t * 0.13 + 1.3)
+            + (noise(p * 1.4 + vec2(t * 0.05, 0.0)) - 0.5) * 0.5;
     return vec2(cos(a), sin(a));
 }
 
@@ -133,11 +133,11 @@ vec4 strokes(vec2 px, mat2 toFlow, vec3 under, float cell, float seed, float t) 
             float r2 = hash(id + 7.7);
             vec2 c = (grid + vec2(float(i), float(j)) + 0.5 + 0.6 * (vec2(r1, r2) - 0.5)) * cell;
 
-            float life = fract(t * 0.15 + hash(id + 11.1));
+            float life = fract(t * 0.1 + hash(id + 11.1));
             float fade = smoothstep(0.0, 0.3, life) * (1.0 - smoothstep(0.6, 1.0, life));
 
             vec2 d = toFlow * (px - c);
-            d.x -= (life - 0.5) * cell * 2.0;            // carried by the current
+            d.x -= (life - 0.5) * cell * 1.6;            // carried by the current
             float len = cell * (1.1 + 0.6 * r2);
             d.y -= (r1 - 0.5) * 0.5 * d.x * d.x / len;   // the sweep of the wrist
 

@@ -36,12 +36,12 @@ const FORCES = PASS + `
 uniform sampler2D uVelocity;
 uniform sampler2D uCurl;
 
-const float WIND_SPEED = 8.0;  // texels per second
+const float WIND_SPEED = 5.5;  // texels per second
 const float WIND_GRIP = 0.08;  // how quickly the air settles back into the wind, per second
 const float SHEAR = 1.0;       // speed difference between wind layers; shear rolls up eddies
 const float VORTICITY = 0.4;   // curl confinement: keeps eddies from smoothing away
-const float VORTEX = 4.0;      // the golden spiral's steady stir, texels per second²
-const float GUST = 5.0;        // small wandering gusts that seed new eddies
+const float VORTEX = 3.0;      // the golden spiral's steady stir, texels per second²
+const float GUST = 3.5;        // small wandering gusts that seed new eddies
 const float MAX_SPEED = 40.0;
 
 void main() {
