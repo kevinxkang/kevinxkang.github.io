@@ -29,6 +29,13 @@ html {
   --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
   --section-top: var(--space-5);
   --section-bottom: var(--space-5);
+
+  /* golden ratio type scale: each step is φ (1.618) times the last */
+  --phi: 1.618;
+  --step-0: clamp(1rem, 0.9rem + 0.4vw, 1.25rem);
+  --step-1: calc(var(--step-0) * var(--phi));
+  --step-2: calc(var(--step-1) * var(--phi));
+  --leading: var(--phi);
 }
 
 
@@ -146,7 +153,7 @@ img {
 a {
   text-decoration: none;
   /*color: inherit;*/
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Instrument Sans', sans-serif;
 }
 
 

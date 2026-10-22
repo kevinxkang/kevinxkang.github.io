@@ -14,6 +14,14 @@ const PRINT_SEQUENCE = [
     "print('welcome to my website!')",
 ];
 
+// shorter ending so the line stays big and on one line on phones
+const PHONE_PRINT_SEQUENCE = [
+    ...PRINT_SEQUENCE.slice(0, -1),
+    "print('welcome!')",
+];
+
+const isPhone = () => window.matchMedia("(max-width: 600px)").matches;
+
 const HOME_PARAGRAPHS = [
     "currently at amazon agi building ai/ml infrastructure for nova models",
     "here you'll find a collection of my musings, experiments, and essays",
@@ -25,7 +33,7 @@ export default function Home() {
         <section className="home-wrap">
             <div className="home-print-container">
                 <TypeAnimation
-                    sequence={PRINT_SEQUENCE}
+                    sequence={isPhone() ? PHONE_PRINT_SEQUENCE : PRINT_SEQUENCE}
                     cursor
                     className="print-animation"
                 />
