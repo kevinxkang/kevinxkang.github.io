@@ -1,30 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { VERTEX_SHADER, FRAGMENT_SHADER } from "./aurora-shader";
+import { createProgram, createScreenTriangle } from "./aurora-gl";
+import { VERTEX_SHADER, FRAGMENT_SHADER, FLUID_PAINT_SHADER } from "./aurora-shader";
+import { createFluid } from "./aurora-fluid";
 
 const MAX_PIXELS = 1.2e6;   // cap canvas size so big monitors and weak gpus stay smooth
 const FRAME_MS = 1000 / 30; // a slow painting doesn't need 60fps
+const SIM_STEP = 1 / 30;    // seconds of weather simulated per frame
 const BRUSH_SIZE = 56;      // spacing of the broadest brushstrokes, in css px
-
-const compile = (gl, type, source) => {
-    const shader = gl.createShader(type);
-    gl.shaderSource(shader, source);
-    gl.compileShader(shader);
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        throw new Error(gl.getShaderInfoLog(shader));
-    }
-    return shader;
-};
-
-const createProgram = (gl) => {
-    const program = gl.createProgram();
-    gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERTEX_SHADER));
-    gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, FRAGMENT_SHADER));
-    gl.linkProgram(program);
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        throw new Error(gl.getProgramInfoLog(program));
-    }
-    return program;
-};
 
 // the original css aurora, used when webgl isn't available
 const CssAurora = () => (
@@ -41,41 +23,57 @@ const Aurora = () => {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        const gl = canvas && canvas.getContext("webgl", { antialias: false, alpha: false });
+        const options = { antialias: false, alpha: false };
+        const gl = canvas && (canvas.getContext("webgl2", options) || canvas.getContext("webgl", options));
         if (!gl) {
             setWebglFailed(true);
             return;
         }
+        createScreenTriangle(gl);
 
-        let program;
+        // the real fluid where the gpu supports it; otherwise the flow comes from formulas
+        let fluid = null;
         try {
-            program = createProgram(gl);
+            fluid = createFluid(gl);
+        } catch (err) {
+            console.warn("aurora fluid unavailable, painting without it", err);
+        }
+
+        let painter;
+        try {
+            painter = createProgram(gl, VERTEX_SHADER, fluid ? FLUID_PAINT_SHADER : FRAGMENT_SHADER);
         } catch (err) {
             console.warn("aurora shader failed, using css fallback", err);
             setWebglFailed(true);
             return;
         }
-        gl.useProgram(program);
-
-        // one triangle that covers the whole screen
-        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-        const aPos = gl.getAttribLocation(program, "aPos");
-        gl.enableVertexAttribArray(aPos);
-        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
-
-        const uRes = gl.getUniformLocation(program, "uRes");
-        const uTime = gl.getUniformLocation(program, "uTime");
-        const uCell = gl.getUniformLocation(program, "uCell");
+        const { uniforms } = painter;
 
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         // start mid-painting so the first frame isn't the same every visit
         const timeOffset = Math.random() * 1000;
+        let brush = BRUSH_SIZE;
         let frameId = 0;
         let lastFrame = 0;
 
         const draw = (now) => {
-            gl.uniform1f(uTime, timeOffset + now / 1000);
+            const time = timeOffset + now / 1000;
+            if (fluid) fluid.step(SIM_STEP, time);
+
+            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            gl.useProgram(painter.program);
+            gl.uniform2f(uniforms.uRes, canvas.width, canvas.height);
+            gl.uniform1f(uniforms.uTime, time);
+            gl.uniform1f(uniforms.uCell, brush);
+            if (fluid) {
+                gl.activeTexture(gl.TEXTURE0);
+                gl.bindTexture(gl.TEXTURE_2D, fluid.velocity.texture);
+                gl.uniform1i(uniforms.uVelocity, 0);
+                gl.activeTexture(gl.TEXTURE1);
+                gl.bindTexture(gl.TEXTURE_2D, fluid.dye.texture);
+                gl.uniform1i(uniforms.uDye, 1);
+            }
             gl.drawArrays(gl.TRIANGLES, 0, 3);
         };
 
@@ -85,10 +83,10 @@ const Aurora = () => {
             const scale = Math.min(1, Math.sqrt(MAX_PIXELS / (w * h)));
             canvas.width = Math.round(w * scale);
             canvas.height = Math.round(h * scale);
-            gl.viewport(0, 0, canvas.width, canvas.height);
-            gl.uniform2f(uRes, canvas.width, canvas.height);
-            gl.uniform1f(uCell, BRUSH_SIZE * scale);
-            draw(performance.now());
+            brush = BRUSH_SIZE * scale;
+            const now = performance.now();
+            if (fluid) fluid.resize(w / h, timeOffset + now / 1000);
+            draw(now);
         };
 
         const loop = (now) => {

@@ -1,19 +1,23 @@
 // romantic aurora: long sweeping brushstrokes carried by wind and swell, turning
-// in a golden spiral around a warm light at the golden point of the canvas
+// in a golden spiral around a warm light at the golden point of the canvas.
+// the pieces are shared: the fluid simulation reuses the palette, wind and sky,
+// and paints its flow with the same brushstrokes
 
 export const VERTEX_SHADER = `
 attribute vec2 aPos;
+varying vec2 vUv;
 void main() {
+    vUv = aPos * 0.5 + 0.5;
     gl_Position = vec4(aPos, 0.0, 1.0);
 }
 `;
 
-export const FRAGMENT_SHADER = `
+// palette, noise, and the golden point
+export const COMMON = `
 precision highp float;
 
-uniform vec2 uRes;    // canvas size in px
+uniform vec2 uRes;    // size of whatever this pass draws into, in px
 uniform float uTime;  // seconds
-uniform float uCell;  // spacing of the broadest strokes, in canvas px
 
 const float PHI = 1.6180339;
 // a golden spiral grows by φ every quarter turn, so its tangent sits at a fixed
@@ -57,24 +61,32 @@ float fbm(vec2 p) {
 vec2 goldenPoint() {
     return vec2(uRes.x / uRes.y / PHI, 1.0 / (PHI * PHI));
 }
+`;
 
+// wind, the golden spiral, and the sky's color. p is in screen heights
+export const SKY = `
 // wind and swell: long gentle undulations, like lines of wind over open water
 vec2 wind(vec2 p, float t) {
     float a = 0.12
-            + 0.28 * sin(p.x * 2.0 + p.y * 1.5 - t * 0.18)
-            + 0.16 * sin(p.x * 4.3 - p.y * 0.8 + t * 0.11 + 1.3)
-            + (noise(p * 1.4 + vec2(t * 0.045, 0.0)) - 0.5) * 0.5;
+            + 0.28 * sin(p.x * 2.0 + p.y * 1.5 - t * 0.28)
+            + 0.16 * sin(p.x * 4.3 - p.y * 0.8 + t * 0.18 + 1.3)
+            + (noise(p * 1.4 + vec2(t * 0.07, 0.0)) - 0.5) * 0.5;
+    return vec2(cos(a), sin(a));
+}
+
+// the direction of a golden spiral passing through p, around the golden point
+vec2 goldenSpiral(vec2 p) {
+    vec2 r = p - goldenPoint();
+    float a = atan(r.y, r.x) + GOLDEN_PITCH;
     return vec2(cos(a), sin(a));
 }
 
 // near the golden point the wind gathers into a slow golden spiral
 vec2 current(vec2 p, float t) {
     vec2 r = p - goldenPoint();
-    float spiralAngle = atan(r.y, r.x) + GOLDEN_PITCH;
-    vec2 spiral = vec2(cos(spiralAngle), sin(spiralAngle));
     // strongest on a ring around the point, easing off at its heart so it never knots
     float pull = exp(-dot(r, r) / 0.11) * smoothstep(0.0, 0.09, length(r)) * 0.75;
-    return normalize(mix(wind(p, t), spiral, pull) + 1e-4);
+    return normalize(mix(wind(p, t), goldenSpiral(p), pull) + 1e-4);
 }
 
 // the sky underneath: soft drifting color, lit warmly from the golden point
@@ -92,6 +104,11 @@ vec3 sky(vec2 p, float t) {
     c = mix(c, GLOW, exp(-dot(r, r) / 0.06) * 0.55);
     return c;
 }
+`;
+
+// the brushwork: layers of long tapered strokes laid along a direction field
+const STROKES = `
+uniform float uCell;  // spacing of the broadest strokes, in canvas px
 
 // broken color: each stroke leans slightly toward one palette hue
 vec3 tint(float h) {
@@ -116,11 +133,11 @@ vec4 strokes(vec2 px, mat2 toFlow, vec3 under, float cell, float seed, float t) 
             float r2 = hash(id + 7.7);
             vec2 c = (grid + vec2(float(i), float(j)) + 0.5 + 0.6 * (vec2(r1, r2) - 0.5)) * cell;
 
-            float life = fract(t * 0.1 + hash(id + 11.1));
+            float life = fract(t * 0.15 + hash(id + 11.1));
             float fade = smoothstep(0.0, 0.3, life) * (1.0 - smoothstep(0.6, 1.0, life));
 
             vec2 d = toFlow * (px - c);
-            d.x -= (life - 0.5) * cell * 1.6;            // carried by the current
+            d.x -= (life - 0.5) * cell * 2.0;            // carried by the current
             float len = cell * (1.1 + 0.6 * r2);
             d.y -= (r1 - 0.5) * 0.5 * d.x * d.x / len;   // the sweep of the wrist
 
@@ -147,25 +164,39 @@ vec4 strokes(vec2 px, mat2 toFlow, vec3 under, float cell, float seed, float t) 
     return vec4(paint, coverage);
 }
 
-void main() {
-    vec2 px = gl_FragCoord.xy;
-    float t = uTime;
-    vec2 p = px / uRes.y;
-
-    // strokes are measured in the current's frame, so they bend as it bends
-    vec2 v = current(p, t);
-    mat2 toFlow = mat2(v.x, -v.y, v.y, v.x);
-
-    // broad to fine, like a painter: each layer's strokes are 1/φ the size of the last
-    vec3 col = sky(p, t);
+// broad to fine, like a painter: each layer's strokes are 1/φ the size of the last
+vec3 painting(vec2 px, vec2 dir, vec3 under, float t) {
+    // strokes are measured in the flow's frame, so they bend as it bends
+    mat2 toFlow = mat2(dir.x, -dir.y, dir.y, dir.x);
+    vec3 col = under;
     vec4 broad = strokes(px, toFlow, col, uCell, 0.0, t);
     col = mix(col, broad.rgb, broad.a);
     vec4 middle = strokes(px, toFlow, col, uCell / PHI, 31.0, t);
     col = mix(col, middle.rgb, middle.a * 0.8);
     vec4 fine = strokes(px, toFlow, col, uCell / (PHI * PHI), 67.0, t);
     col = mix(col, fine.rgb, fine.a * 0.6);
+    return col + (hash(floor(px)) - 0.5) * 0.015; // canvas grain
+}
+`;
 
-    col += (hash(floor(px)) - 0.5) * 0.015; // canvas grain
-    gl_FragColor = vec4(col, 1.0);
+// fallback painting: the flow is drawn from formulas (wind + golden spiral)
+export const FRAGMENT_SHADER = COMMON + SKY + STROKES + `
+void main() {
+    vec2 px = gl_FragCoord.xy;
+    vec2 p = px / uRes.y;
+    gl_FragColor = vec4(painting(px, current(p, uTime), sky(p, uTime), uTime), 1.0);
+}
+`;
+
+// fluid painting: strokes follow the simulated air, colored by the ink it carries
+export const FLUID_PAINT_SHADER = COMMON + STROKES + `
+uniform sampler2D uVelocity;
+uniform sampler2D uDye;
+
+void main() {
+    vec2 px = gl_FragCoord.xy;
+    vec2 uv = px / uRes;
+    vec2 dir = normalize(texture2D(uVelocity, uv).xy + vec2(1e-3, 0.0));
+    gl_FragColor = vec4(painting(px, dir, texture2D(uDye, uv).rgb, uTime), 1.0);
 }
 `;
